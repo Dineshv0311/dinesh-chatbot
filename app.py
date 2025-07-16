@@ -34,7 +34,7 @@ def chat():
     try:
         # Call local Ollama API
         response = requests.post(
-            " https://a988e715d131.ngrok-free.app",
+            "https://a988e715d131.ngrok-free.app",
             json={
                 "model": "dinesh",
                 "prompt": user_input,
