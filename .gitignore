@@ -1,0 +1,11 @@
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+chatlog.db
+chat_log.txt
+ngrok.exe
+.env
+.DS_Store

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chat with Local AI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script>
+    async function sendMessage() {
+      const userMessage = document.getElementById("user").value;
+      if (!userMessage.trim()) return;
+
+      const chatBox = document.getElementById("chat");
+      chatBox.innerHTML += `
+        <div class="message user">
+          <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" class="avatar">
+          <div class="bubble user-bubble">${userMessage}</div>
+        </div>`;
+      document.getElementById("user").value = "";
+
+      const response = await fetch("/chat", {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: userMessage })
+      });
+
+      const data = await response.json();
+      chatBox.innerHTML += `
+        <div class="message bot">
+          <img src="https://cdn-icons-png.flaticon.com/512/4712/4712034.png" class="avatar">
+          <div class="bubble bot-bubble">${data.reply}</div>
+        </div>`;
+
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark');
+    }
+  </script>
+</head>
+<body>
+    <div style="text-align: center; margin-top: 10px;">
+        <button onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+        <a href="/view-log" target="_blank">
+          <button>📄 View Chat Log</button>
+        </a>
+        <a href="/download-log">
+          <button>⬇️ Download Log</button>
+        </a>
+    </div>
+
+    <div class="container">
+        <h1>Chat with Dinesh AI 🤖</h1>
+        <div id="chat"></div>
+        <div class="input-area">
+            <input id="user" type="text" placeholder="Type your message..." />
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <a href="/view-db" target="_blank">
+        <button>🗃 View DB Log</button>
+    </a>
+      
+</body>
+</html>
