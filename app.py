@@ -110,7 +110,10 @@ def view_db():
         return f"<p>Error reading database: {e}</p>"
 
 # 🚀 Run the server
+
 if __name__ == "__main__":
     init_db()
-    print("🚀 Flask server running at http://localhost:5000")
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    print(f"🚀 Flask server running at http://0.0.0.0:{port}")
+    app.run(debug=True, host="0.0.0.0", port=port)
+
