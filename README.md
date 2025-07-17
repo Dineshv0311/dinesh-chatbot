@@ -14,7 +14,7 @@ An open-source, locally hosted chatbot built using Python, Flask, and the powerf
 
 ## 📸 Live Demo
 
-Coming soon (can be hosted via [Render]((https://dinesh-ai.onrender.com/)) or shared over [ngrok](https://ngrok.com/))  
+Coming soon (can be hosted via [Render](( https://60279faee806.ngrok-free.app)) or shared over [ngrok](https://ngrok.com/))  
 → Example: `https://02b4a418754.ngrok-free.app`
 
 ## 🛠️ Tech Stack
